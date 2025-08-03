@@ -19,7 +19,7 @@ body {
       box-sizing: border-box;
   flex-wrap: wrap; 
   transition: all 0.3s ease;
-  /* background: linear-gradient(to right, #525050, #2e2c2c); */
+  
 }
 
 
@@ -64,10 +64,10 @@ body {
 .tagline {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #c8cbcf; /* brighter neon-style blue-green */
+  color: #c8cbcf; 
   white-space: nowrap;
   letter-spacing: 0.5px;
-  /* text-shadow: 0 0 5px rgba(0, 255, 230, 0.6); */
+  
 }
 
 
@@ -264,8 +264,8 @@ button:hover {
   flex-direction: column;
   text-align: center;
   color: white;
-  background: none; /* THIS removes the blue background */
-  height: 90vh; /* previously 400px */
+  background: none; 
+  height: 90vh; 
   padding: 0 20px;
 }
 
@@ -287,7 +287,7 @@ button:hover {
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Dark overlay for contrast */
+  background: rgba(0, 0, 0, 0.4); 
   z-index: -1;
 }
 
@@ -352,7 +352,7 @@ section {
   animation-delay: 0.6s;
 }
 
-/* Different background images for each page */
+
 
 
 body.login-page {
