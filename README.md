@@ -16,24 +16,26 @@ InternHunt is a smart job & internship finder built with HTML, CSS, and JavaScri
 - LocalStorage & Fetch API
 - JSON-based dynamic job rendering
 
+
 🖼 Screenshots
-🔐 Home Page
-[Home Page](./screenshots/home.jpg)
 
-🔐 Home Page
-[Home Page](./screenshots/home1.jpg)
+🔐 Home Page  
+![Home Page](./screenshot/home.jpg)
 
-🔐 Login Page
-[Login Page](./screenshots/login.jpg)
+🔐 Home Page (Alt View)  
+![Home Page Alt](./screenshot/home1.jpg)
 
-🔐 Signup Page
-[signup Page](./screenshots/signup.jpg)
+🔐 Login Page  
+![Login Page](./screenshot/login.jpg)
 
-📄 Resume Upload
-[Resume Upload](./screenshots/upload.jpg)
+🔐 Signup Page  
+![Signup Page](./screenshot/signup.jpg)
 
-💼 Job Recommendations
-[Job Recommendations](./screenshots/job.jpg)
+📄 Resume Upload  
+![Resume Upload](./screenshot/upload.jpg)
 
-💼 Choose Template
-[Choose Template](./screenshots/template.jpg)
+💼 Job Recommendations  
+![Job Recommendations](./screenshot/job.jpg)
+
+🎨 Choose Template  
+![Choose Template](./screenshot/template.jpg)
