@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "Frontend Developer Intern",
+    "company": "WebTech Pvt Ltd",
+    "location": "Remote",
+    "skills": ["HTML", "CSS", "JavaScript"],
+    "description": "Work on UI development with modern frameworks.",
+    "applyLink": "#"
+  },
+  {
+    "id": 2,
+    "title": "Data Analyst",
+    "company": "DataEdge Analytics",
+    "location": "Bangalore",
+    "skills": ["Python", "SQL", "Excel"],
+    "description": "Analyze datasets to generate insights for clients.",
+    "applyLink": "#"
+  },
+  {
+    "id": 3,
+    "title": "Backend Developer",
+    "company": "CloudSoft Solutions",
+    "location": "Delhi NCR",
+    "skills": ["Node.js", "Express", "MongoDB"],
+    "description": "Develop APIs and server-side applications.",
+    "applyLink": "#"
+  },
+  {
+    "id": 4,
+    "title": "AI/ML Intern",
+    "company": "MindNet AI Labs",
+    "location": "Hybrid",
+    "skills": ["Python", "Machine Learning", "NLP"],
+    "description": "Assist in building AI models for text processing.",
+    "applyLink": "#"
+  },
+  {
+    "id": 5,
+    "title": "UI/UX Designer",
+    "company": "CreativeSpark",
+    "location": "Remote",
+    "skills": ["Figma", "Adobe XD", "HTML"],
+    "description": "Design intuitive user interfaces and experiences.",
+    "applyLink": "#"
+  },
+  {
+    "id": 6,
+    "title": "Mobile App Developer",
+    "company": "Appify Pvt Ltd",
+    "location": "Chennai",
+    "skills": ["Flutter", "Dart"],
+    "description": "Develop cross-platform mobile apps.",
+    "applyLink": "#"
+  }
+]

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Select a Template</title>
+  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    body.templates-page {
+      background: url("assets/bg-template.jpg") no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    
+    .container {
+      max-width: 1200px;
+      min-height: 80vh;
+      margin: 140px auto;
+      background: rgba(186, 176, 176, 0.392);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+
+.templates {
+  display: flex;
+  flex-direction: column;       /* Ensure items are in a row */
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  flex-wrap: wrap;           /* Optional: for small screens to wrap gracefully */
+  margin-top: 30px;
+}
+
+
+.template {
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 25px;
+  text-align: center;
+  background: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+    .template:hover {
+      transform: translateY(-5px);
+      background: #eef6ff;
+    }
+
+    .template a {
+      display: block;
+      margin: 8px 0;
+      color: #0b0c0d;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .template a:hover {
+      text-decoration: underline;
+    }
+
+    .template button {
+      margin-top: 10px;
+      padding: 8px 14px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .template button:hover {
+      background-color: #0056cc;
+    }
+    .warning-box {
+  background-color: #ffe0e0;
+  color: #910000;
+  padding: 20px 30px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+
+  </style>
+</head>
+
+<body class="templates-page">
+  <header class="navbar">
+  <div class="nav-left">
+    <div class="logo">
+      <span class="logo-icon">🔍</span>
+      <span class="logo-text">InternHunt</span>
+</div>
+  </div>
+
+  <div class="nav-center">
+    <span class="tagline">🚀 AI-Powered Career Launcher</span>
+  </div>
+
+  <nav class="nav-right">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+    <a href="signup.html"><i class="fas fa-user-plus"></i> Signup</a>
+  </nav>
+</header>
+
+  <div class="container">
+  <div class="warning-box">
+    <h2>Unsupported Resume Format</h2>
+    <p id="templateMessage">
+      Your uploaded resume is missing important information like 'Skills' or 'Education'. Please select one of the following templates, update your resume, and re-upload it.
+    </p>
+  </div>
+
+  <p style="margin-top: 20px; color: #000; font-weight: 500;">
+    Select one of the templates below, download it, and update your resume:
+  </p>
+
+  <div class="templates">
+    <div class="template">
+      <a href="templates/templateA.docx" download>Download Template A (DOCX)</a>
+      <a href="templates/templateA.pdf" download>Download Template A (PDF)</a>
+      <button onclick="redirectToUpload()">Select & Continue</button>
+    </div>
+    <div class="template">
+      <a href="templates/templateB.docx" download>Download Template B (DOCX)</a>
+      <a href="templates/templateB.pdf" download>Download Template B (PDF)</a>
+      <button onclick="redirectToUpload()">Select & Continue</button>
+    </div>
+    <div class="template">
+      <a href="templates/templateC.docx" download>Download Template C (DOCX)</a>
+      <a href="templates/templateC.pdf" download>Download Template C (PDF)</a>
+      <button onclick="redirectToUpload()">Select & Continue</button>
+    </div>
+  </div>
+</div>
+
+
+  <script>
+    const status = localStorage.getItem("resumeStatus");
+    if (status === "invalid") {
+      document.getElementById("templateMessage").textContent =
+        "Your uploaded resume is missing important information like 'Skills' or 'Education'. Please select one of the following templates, update your resume, and re-upload it.";
+    }
+
+    function redirectToUpload() {
+      localStorage.removeItem("resumeStatus");
+      window.location.href = "upload.html";
+    }
+  </script>
+  <script>
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+      navbar.style.padding = "0.4rem 2rem";
+      navbar.style.backgroundColor = "rgba(0,0,0,0.85)";
+    } else {
+      navbar.style.padding = "1rem 2rem";
+      navbar.style.backgroundColor = "black";
+    }
+  });
+</script>
+</body>
+</html>
