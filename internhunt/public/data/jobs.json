@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Frontend Developer Intern",
+    "company": "WebTech Pvt Ltd",
+    "location": "Remote",
+    "skills": ["HTML", "CSS", "JavaScript"],
+    "description": "Work on UI development with modern frameworks.",
+    "salary": "$10,000 - $15,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 2,
+    "title": "Data Analyst",
+    "company": "DataEdge Analytics",
+    "location": "Bangalore",
+    "skills": ["Python", "SQL", "Excel"],
+    "description": "Analyze datasets to generate insights for clients.",
+    "salary": "$40,000 - $55,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 3,
+    "title": "Backend Developer",
+    "company": "CloudSoft Solutions",
+    "location": "Delhi NCR",
+    "skills": ["Node.js", "Express", "MongoDB"],
+    "description": "Develop APIs and server-side applications.",
+    "salary": "$50,000 - $70,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 4,
+    "title": "AI/ML Intern",
+    "company": "MindNet AI Labs",
+    "location": "Hybrid",
+    "skills": ["Python", "Machine Learning", "NLP"],
+    "description": "Assist in building AI models for text processing.",
+    "salary": "$15,000 - $20,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 5,
+    "title": "UI/UX Designer",
+    "company": "CreativeSpark",
+    "location": "Remote",
+    "skills": ["Figma", "Adobe XD", "HTML"],
+    "description": "Design intuitive user interfaces and experiences.",
+    "salary": "$35,000 - $50,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 6,
+    "title": "Mobile App Developer",
+    "company": "Appify Pvt Ltd",
+    "location": "Chennai",
+    "skills": ["Flutter", "Dart"],
+    "description": "Develop cross-platform mobile apps.",
+    "salary": "$45,000 - $60,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 7,
+    "title": "Digital Marketing Manager",
+    "company": "BrandBoost",
+    "location": "Sydney, Australia",
+    "skills": ["SEO", "SEM", "Digital Marketing", "Google Analytics", "Content Marketing"],
+    "description": "Lead digital marketing campaigns, SEO/SEM strategies, and content marketing initiatives.",
+    "salary": "$60,000 - $80,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 8,
+    "title": "SEO Specialist",
+    "company": "Rankify Solutions",
+    "location": "Remote",
+    "skills": ["SEO", "Google Analytics", "SEMrush"],
+    "description": "Improve website rankings using advanced SEO techniques and tools.",
+    "salary": "$45,000 - $55,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 9,
+    "title": "Content Marketing Strategist",
+    "company": "WriteWave",
+    "location": "Melbourne",
+    "skills": ["Content Marketing", "Copywriting", "Social Media Marketing"],
+    "description": "Plan and execute content strategies to increase engagement and brand reach.",
+    "salary": "$50,000 - $65,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 10,
+    "title": "Social Media Manager",
+    "company": "BuzzHub Media",
+    "location": "Remote",
+    "skills": ["Social Media Marketing", "Content Creation", "Digital Marketing"],
+    "description": "Manage social media platforms and build engaging online communities.",
+    "salary": "$40,000 - $55,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 11,
+    "title": "Business Analyst",
+    "company": "FinEdge Consulting",
+    "location": "Singapore",
+    "skills": ["Data Analysis", "SQL", "Excel", "Communication"],
+    "description": "Bridge the gap between IT and business through data-driven insights.",
+    "salary": "$55,000 - $70,000 / year",
+    "applyLink": "#"
+  },
+  {
+    "id": 12,
+    "title": "Cloud Engineer",
+    "company": "SkyNet Systems",
+    "location": "USA (Remote)",
+    "skills": ["AWS", "Azure", "Google Cloud", "DevOps"],
+    "description": "Design and manage scalable cloud solutions for enterprise clients.",
+    "salary": "$80,000 - $110,000 / year",
+    "applyLink": "#"
+  }
+]
