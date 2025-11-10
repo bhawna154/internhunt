@@ -92,10 +92,21 @@
     <p>Your resume should include: Skills, Education, Projects, and Experience.</p>
 
     <form id="resumeForm">
-      <input type="file" id="resumeInput" accept=".pdf,.docx" required />
-      <button type="submit">Submit</button>
-    </form>
+  <input type="file" id="resumeInput" accept=".pdf,.docx" required />
+  <button type="submit">Upload Resume</button>
+</form>
+
   </div>
+  <div class="resume-feedback">
+  <h2>Resume Score: <span id="score">--</span>/100</h2>
+
+  <h3>Strengths:</h3>
+  <ul id="strengths"></ul>
+
+  <h3>Weaknesses:</h3>
+  <ul id="weaknesses"></ul>
+</div>
+
 
   <script>
     window.addEventListener("scroll", function () {

@@ -1,98 +1,95 @@
-
+// fileName: Upload.jsx (FINAL Corrected Version)
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 
-export default function Upload(){
+export default function Upload() {
   const navigate = useNavigate();
+
   useEffect(() => {
+    // Check for login status
+    if (!localStorage.getItem("currentUser")) {
+      navigate("/login");
+      return;
+    }
+    
     document.body.classList.add("upload-page");
     return () => document.body.classList.remove("upload-page");
-  }, []);
+  }, [navigate]);
 
-  async function handleSubmit(e){
+  async function handleSubmit(e) {
     e.preventDefault();
     const input = document.getElementById("resumeInput");
     const file = input.files[0];
-    if(!file) return alert("Upload a resume file.");
-  const reader = new FileReader();
-  reader.onload = () => {
-    localStorage.setItem("uploadedResume", reader.result);
-    console.log("Resume stored in localStorage ✅");
-  };
-  reader.readAsDataURL(file);
-    let resumeText = "";
+
+    // --- CRITICAL CHANGE: We rely on the browser's 'required' property now. ---
+    // If the file is null/empty, the browser will stop here and show a warning.
+    
+    // Check file size (5MB limit)
+    if (file.size > 5 * 1024 * 1024) {
+      return alert("File size exceeds 5MB limit.");
+    }
+
+    const formData = new FormData();
+    formData.append("resume", file);
 
     try {
-      // PDF parsing using global pdfjs
-      if (file.type === "application/pdf") {
-        const loadingTask = window.pdfjsLib.getDocument(URL.createObjectURL(file));
-        const pdf = await loadingTask.promise;
-        for (let i = 1; i <= pdf.numPages; i++) {
-          const page = await pdf.getPage(i);
-          const textContent = await page.getTextContent();
-          resumeText += textContent.items.map(item => item.str).join(" ") + " ";
-        }
+      // Clear previous results before new analysis
+      localStorage.removeItem("resumeScore");
+      localStorage.removeItem("matchedJobs"); 
+      localStorage.removeItem("strengths");
+      localStorage.removeItem("weaknesses");
+      localStorage.removeItem("userSkills");
+
+      // Send to server for analysis/validation
+      const res = await fetch("http://127.0.0.1:5000/analyze", { method: "POST", body: formData });
+      const data = await res.json();
+
+      // CHECK: If server returned an error (e.g., Invalid File Format 400 status)
+      if (res.status !== 200) {
+        throw new Error(data.error || "Server error analyzing resume.");
       }
-      // DOCX parsing using global mammoth
-      else if (file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
-        const reader = new FileReader();
-        resumeText = await new Promise((resolve, reject) => {
-          reader.onload = async (ev) => {
-            try {
-              const result = await window.mammoth.extractRawText({arrayBuffer: ev.target.result});
-              resolve(result.value);
-            } catch(err){ reject(err); }
-          };
-          reader.onerror = (err) => reject(err);
-          reader.readAsArrayBuffer(file);
-        });
-      } else {
-        alert("Only PDF or DOCX allowed.");
-        return;
+      
+      // SUCCESS: Save data and navigate to results
+      localStorage.setItem("resumeScore", data.score);
+      localStorage.setItem("matchedJobs", JSON.stringify(data.matched_jobs || [])); 
+      localStorage.setItem("strengths", JSON.stringify(data.strengths || []));
+      localStorage.setItem("weaknesses", JSON.stringify(data.weaknesses || []));
+      localStorage.setItem("userSkills", JSON.stringify(data.skills || []));
+
+      navigate("/results"); 
+
+    } catch (err) {
+      console.error("Analysis Error:", err);
+      
+      // FAILURE: Catch the error (e.g., invalid file type) and send to Templates
+      let userMessage = `Analysis Failed: ${err.message}`;
+      
+      if (err.message.includes("Invalid file format")) {
+          userMessage = `Error: Please upload a valid .pdf or .docx resume.`;
       }
-
-      // Validation
-      if (!isResumeContent(resumeText)) {
-        localStorage.setItem("resumeStatus","invalid");
-        navigate("/templates");
-        return;
-      }
-
-      const skills_keywords = ["python","java","c++","javascript","html","css","sql","excel","machine learning","data analysis","nlp","deep learning","flask","django","react","node.js"];
-      const foundSkills = skills_keywords.filter(s => resumeText.toLowerCase().includes(s));
-
-      localStorage.setItem("userSkills", foundSkills.join(","));
-      localStorage.setItem("resumeStatus","valid");
-      navigate("/results");
-
-    } catch(err) {
-      console.error(err);
-      alert("Error reading resume.");
+      
+      alert(userMessage);
+      navigate("/templates"); // Redirect to Templates for invalid/failed analysis
     }
   }
 
-  function isResumeContent(text) {
-    const lowerText = text.toLowerCase();
-    const keywords = [/experience/,/education/,/skills/,/projects/,/summary/,/professional/,/certifications/];
-    const invalid = ["item","qty","invoice","total"];
-    if (lowerText.length < 200) return false;
-    let keywordCount = 0;
-    keywords.forEach(k => { if (k.test(lowerText)) keywordCount++; });
-    const hasInvalid = invalid.some(w => lowerText.includes(w));
-    const hasEmail = /\S+@\S+\.\S+/.test(lowerText);
-    const hasPhone = /\d{10,}/.test(lowerText);
-    return (keywordCount >= 2 && !hasInvalid && (hasEmail || hasPhone));
-  }
-
   return (
-    <div className="container">
-      <h2>Upload Your Resume (PDF or DOCX)</h2>
-      <p>Your resume should include: Skills, Education, Projects, and Experience.</p>
-
-      <form id="resumeForm" onSubmit={handleSubmit}>
-        <input type="file" id="resumeInput" accept=".pdf,.docx" required />
-        <button type="submit">Submit</button>
+    <div className="container" style={{ maxWidth: "600px", margin: "50px auto", textAlign: "center" }}>
+      <h1>Resume Analyzer</h1>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px', padding: '20px', border: '1px solid #555', borderRadius: '8px', backgroundColor: '#222' }}>
+        {/* CRITICAL CHANGE: Added 'required' attribute back */}
+        <input type="file" id="resumeInput" accept=".pdf,.docx" required style={{ padding: '10px', borderRadius: '4px', border: '1px solid #777', backgroundColor: '#444', color: 'white' }} />
+        <button type="submit" style={{ padding: '10px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Analyze Resume</button>
       </form>
+      
+      <div style={{ marginTop: '20px' }}>
+        <button 
+          onClick={() => navigate("/templates")} 
+          style={{ padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+        >
+          Go to Resume Builder & Templates
+        </button>
+      </div>
     </div>
   );
 }

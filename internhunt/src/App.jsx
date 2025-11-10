@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import "./styles/style.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -18,16 +17,15 @@ function App() {
   return (
     <>
       <Navbar />
-      <main style={{ marginTop: "70px" }}> {/* leave room for fixed navbar */}
-        
+      <main style={{ marginTop: "70px" }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/signup" element={<Signup/>} />
-          <Route path="/upload" element={<Upload/>} />
-          <Route path="/results" element={<Results/>} />
-          <Route path="/saved-jobs" element={<SavedJobs/>} />
-          <Route path="/templates" element={<Templates/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/results" element={<Results />} />
+          <Route path="/saved-jobs" element={<SavedJobs />} />
+          <Route path="/templates" element={<Templates />} />
           <Route path="/saved-resumes" element={<SavedResumes />} />
         </Routes>
       </main>
